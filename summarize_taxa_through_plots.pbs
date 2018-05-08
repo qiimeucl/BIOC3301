@@ -14,8 +14,8 @@ export TMPDIR=~/qiime_tmp
 
 #Summarizing OTU table using Sample Nitrogen
 summarize_taxa_through_plots.py \
--i analysis/core_otu_table/core_table_95.biom \
--o ~/results/95_taxa_N \
+-i analysis/cut_otu_table_bac/otu_table_D_0__Bacteria.biom \
+-o ~/results/97_taxa_N \
 -m ~/analysis/cut_map \
 -c SampleNitrogen \
 
