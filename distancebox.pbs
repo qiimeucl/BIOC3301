@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p short
+
+module load eb
+module load Miniconda2
+source deactivate
+
+source activate qiime1
+
+export TMPDIR=~/qiime_tmp
+
+make_distance_boxplots.py -d ~/results/cut_cdout/bdiv_even30000/unweighted_unifrac_dm.txt -m ~/analysis/cut_map -f SamplePotassium -o ~/tutorial_output_K -n 999
+
+
+source deactivate

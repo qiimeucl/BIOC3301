@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p short
+
+module load eb
+module load Miniconda2
+
+source deactivate
+
+source activate qiime1
+
+export TMPDIR=~/qiime_tmp
+
+split_otu_table_by_taxonomy.py -i ~/analysis/cut_otu_table -L 1 -o analysis/cut_otu_table_bac
+
+source deactivate
