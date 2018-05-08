@@ -1,0 +1,24 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p short
+
+module load eb 
+module load Miniconda2
+
+source deactivate
+
+source activate qiime1
+
+export TMPDIR=~/qiime_tmp
+
+filter_samples_from_otu_table.py \
+-i basic_pipeline/otus/otu_table.biom \
+-o analysis/cut_otu_table \
+-m basic_pipeline/2018_02_smb/map.tsv \
+--output_mapping_fp analysis/cut_map \
+--sample_id_fp ~/exclude.txt \
+--negate_sample_id_fp \
+
+source deactivate
+
