@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH -t 5:00:00
+#SBATCH -n 24
+#SBATCH -p normal
+
+module load eb
+module load Miniconda2
+
+source deactivate
+
+source activate qiime1
+
+export TMPDIR=~/qiime_tmp
+
+core_diversity_analyses.py -o ~/results/cut_paper_cdout -i ~/analysis/cut_otu_table -m ~/analysis/cut_map -t ~/97_otus.tre -e 30000 -a -O 24
+
+source deactivate

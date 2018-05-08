@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p short
+
+module load eb
+module load Miniconda2 
+
+source deactivate
+
+source activate qiime1
+
+export TMPDIR=~/qiime_tmp 
+
+#Summarizing OTU table using Sample Nitrogen
+summarize_taxa_through_plots.py \
+-i analysis/core_otu_table/core_table_95.biom \
+-o ~/results/95_taxa_N \
+-m ~/analysis/cut_map \
+-c SampleNitrogen \
+
+source deactivate
